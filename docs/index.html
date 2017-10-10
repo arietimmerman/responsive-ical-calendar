@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>vue-responsive-calendar</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.0.0-beta/dist/css/bootstrap.min.css">
+
+    <!-- Responsive Calendar CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/vue-ical-calendar.css">
+    
+    <!-- Vue -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
+
+    <style type="text/css">
+    html, body
+     {
+      height: 100%;
+      background-color: rgb(200,200,200);
+      overflow: hidden;
+    }
+
+    #app{
+      margin: 40px;
+      background-color: white;
+      height: calc(100% - 80px);
+      padding: 20px;
+      
+    }
+  </style>
+  </head>
+  <body>
+
+    <div id="app">
+
+      <responsive-calendar-ical max-size="l" :ical="'./resources/calendaritems.ics'"></responsive-calendar-ical>
+
+    </div>
+
+    <script src="/assets/vue-ical-calendar.browser.js"></script>
+
+    <script>
+const app = new Vue({
+    el: '#app'
+});
+    </script>
+
+  </body>
+</html>
