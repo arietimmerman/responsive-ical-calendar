@@ -41,17 +41,24 @@ export default {
 	methods: {
 
 		loadDateRange: function (fromDate, toDate) {
-			
+
+			return new Promise(function (resolve, reject) {
+				resolve('done');
+			});
+		},
+
+		getAgendaItems: function (fromDate, toDate) {
+
+			console.log('get agenda items from: ' + fromDate.format('YYYYMMDD'));
+
 			var parent = this;
 
 			return new Promise(function (resolve, reject) {
 
-				parent.currentRange = moment.range(fromDate, toDate);
-
 				if (parent.agendaItems[fromDate.format('YYYYMMDD')] && parent.agendaItems[toDate.format('YYYYMMDD')]) {
 
 					// do nothing
-					resolve('done');
+					resolve(parent.agendaItems);
 
 				} else {
 
@@ -125,15 +132,7 @@ export default {
 						parent.calendarInformation = calendarNames;
 						parent.enabledCalendars = Object.keys(calendarNames);
 
-						var result = {};
-
-						for (let day of parent.currentRange.by('days')) {
-							result[day.format('YYYYMMDD')] = parent.agendaItems[day.format('YYYYMMDD')];
-						}
-
-						parent.eventsPropReplacement = result;
-
-						resolve('done');
+						resolve(parent.agendaItems);
 
 					}, response => {
 						// error callback
